@@ -5,7 +5,7 @@ import './App.css'
 class App extends React.Component{
     render(){
         return(
-            <div className='main-wrapper'>
+            <div className='container main-wrapper'>
                 <div className='title-wrapper'>
                     <h1>ToDo List</h1>
                 </div>

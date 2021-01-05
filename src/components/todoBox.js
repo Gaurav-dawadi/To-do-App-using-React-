@@ -1,6 +1,7 @@
 import React from 'react'
 import TodoForm from './todo-form'
 import TodoList from './todo-list'
+import './todoBox.css'
 
 class TodoBox extends React.Component{
     constructor(){
@@ -19,7 +20,9 @@ class TodoBox extends React.Component{
     render(){
         return(
             <div>
-                <TodoForm whenSubmit={this.handleTodoList.bind(this)}/>
+                <div className='form-wrapper'>
+                    <TodoForm whenSubmit={this.handleTodoList.bind(this)}/>
+                </div>
                 <TodoList list={this.state.todolist}/>
             </div>
         )

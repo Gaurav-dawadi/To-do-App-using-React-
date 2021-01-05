@@ -1,7 +1,11 @@
 input{
     width: 50em;
 }
-
 button{
     margin-left: 2em;
+    width: 9em;
+    height: 3em;
+}
+form>input{
+    height: 3em;
 }

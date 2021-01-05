@@ -3,3 +3,6 @@
     justify-content: center;
     margin-top: 2em;
 }
+.title-wrapper>h1{
+    font-size: 5em;
+}

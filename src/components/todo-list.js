@@ -7,11 +7,19 @@ class TodoList extends React.Component{
     }
     render(){
         return(
-            <div className='todo-wrapper'>
+            <div className='container todo-wrapper'>
                 {
                     this.props.list.map((text, idx) => {
-                        return (
-                            <h3 key={idx}>{text}</h3> 
+                        return(
+                            <div className='todoitem-wrapper'>
+                                <div className='item-wrapper'>
+                                    <h4 key={idx}>{text}</h4>
+                                </div>
+                                <div className='button-wrapper'>
+                                    <button className='btn btn-warning btn-md'>Edit</button>
+                                    <button className='btn btn-danger btn-md'>Delete</button>
+                                </div>
+                            </div>
                         )
                     })
                 }
