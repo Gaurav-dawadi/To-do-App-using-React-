@@ -1,11 +1,14 @@
 import React from 'react'
+import uuid from 'react-uuid';
 import './todo-form.css'
+
 
 class TodoForm extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            input: ''
+            input: '',
+            id: ''
         }
     }
     handleSubmit(e){
@@ -13,7 +16,8 @@ class TodoForm extends React.Component{
     }
     handleChange(event){
         this.setState({
-            input: event.target.value
+            input: event.target.value,
+            id: uuid(),
         })
     }
     handleClick(){
