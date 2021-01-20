@@ -4,11 +4,8 @@ import TodoList from './todo-list'
 import './todoBox.css'
 
 class TodoBox extends React.Component{
-    constructor(){
-        super();
-        this.state={
-            todolist: []
-        }
+    state={
+        todolist: []
     }
 
     handleTodoList(text){

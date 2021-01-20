@@ -2,9 +2,6 @@ import React from 'react'
 import './todo-list.css'
 
 class TodoList extends React.Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         return(
             <div className='container todo-wrapper'>
