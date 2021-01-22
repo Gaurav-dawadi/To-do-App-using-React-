@@ -3,11 +3,18 @@ import TodoForm from './todoForm'
 import TodoList from './todoList'
 import {connect} from 'react-redux'
 
+const mapStateToProps = state => {
+    console.log("The state is", state.allReducer)
+    return{
+        newState: state.allReducer,  
+    }
+}
+
 class App extends React.Component{
     render(){
-        const list = this.props.newState.todoList.map((data, id) => {
+        const list = this.props.newState.todoList.map((data) => {
             return(
-                <TodoList key={id} text={data}/>
+                <TodoList key={data} text={data}/>
             )
         })
 
@@ -18,13 +25,6 @@ class App extends React.Component{
                 {list}
             </div>
         )
-    }
-}
-
-const mapStateToProps = state => {
-    console.log("The state is", state.allReducer)
-    return{
-        newState: state.allReducer,  
     }
 }
 

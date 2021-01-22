@@ -10,7 +10,7 @@ export const ADD_TODO = (data) => {
 }
 
 export const EDIT_TODO = (data, id) => {
-    console.log(`Task ${data} EDITED`)
+    console.log(`Third step ----> Task of Id ${id} EDITED To ${data}`)
     return{
         type: EDIT_TASK,
         payload: data,
@@ -19,7 +19,7 @@ export const EDIT_TODO = (data, id) => {
 }
 
 export const DELETE_TODO = (id) => {
-    console.log(`Task with ID ${id} DELETED`)
+    console.log(`Third step ----> Task with ID ${id} DELETED`)
     return{
         type: DELETE_TASK,
         id

@@ -1,5 +1,5 @@
 import React from 'react'
-import uuid from 'react-uuid'
+// import uuid from 'react-uuid'
 import { connect } from 'react-redux'
 import { ADD_TODO } from '../redux/actions/actionCreators'
 
@@ -7,14 +7,12 @@ import { ADD_TODO } from '../redux/actions/actionCreators'
 class TodoForm extends React.Component{
 
     state = {
-        input: '',
-        id: ''
+        input: '', 
     }
 
     handleChange(event){
         this.setState({
             input: event.target.value,
-            id: uuid()
         })
     }
     handleSubmit(event){
