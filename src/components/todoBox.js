@@ -8,8 +8,8 @@ class TodoBox extends React.Component{
         todolist: JSON.parse(localStorage.getItem('ToDo')) || []
     }
 
-    handleTodoList(text){
-        const newList = [...this.state.todolist, text]
+    handleTodoList(list){
+        const newList = [...this.state.todolist, list]
         this.setState({
             todolist: newList
         },
@@ -24,7 +24,6 @@ class TodoBox extends React.Component{
             }
             return data
         })
-        // console.log(newTodoList)
         this.setState({
             todolist: newTodoList
         },
@@ -38,18 +37,16 @@ class TodoBox extends React.Component{
         this.setState({
             todolist: newTodoList 
         },
-        
         localStorage.setItem('ToDo', JSON.stringify(newTodoList))
         )
-        console.log("Deleted")
     }
     
     render(){
-
-        const list = this.state.todolist.map((data, idx) => {
-            return(<TodoList key={idx} text={data} whenUpdate={this.handleUpdate.bind(this, idx)}
-                    whenDelete={this.handleDelete.bind(this, idx)}/>)
-      
+        const list = this.state.todolist.map((data) => {
+            return(<TodoList key={data.id} text={data.input}
+                    whenUpdate={this.handleUpdate.bind(this, data.id)}
+                    whenDelete={this.handleDelete.bind(this, data.id)}/>
+                )
         })
 
         return(
