@@ -12,7 +12,7 @@ class App extends React.Component{
         })
 
         return(
-            <div>
+            <div className='container mt-5'>
                 <h1>To-Do</h1>
                 <TodoForm />
                 {list}
