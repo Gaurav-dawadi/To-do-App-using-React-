@@ -9,34 +9,28 @@ const addReducer = (state=initialState, action) => {
     switch (action.type){
         case ADD_TASK:
             const newList = [...state.todoList, action.payload];
-            console.log("New Task POSTED")
             localStorage.setItem("ToDoRedux", JSON.stringify(newList));
             return {
                 todoList: newList
             };
         case EDIT_TASK:
-            console.log(`Id of ${action.payload} in reducer is ${action.id}`)
             const editedList = state.todoList.map((data) => {
-                console.log("Id is",data)
-                if(action.id === data){
-                    data = action.payload  
+                if(action.id === data.id){
+                    data.input = action.payload  
                 }
                 return data 
             })
-            console.log("Fifth step --> OLD Task UPDATED")
             localStorage.setItem("ToDoRedux", JSON.stringify(editedList));
             return {
                 todoList: editedList
             }
         case DELETE_TASK:
-            const afterDeleteList = state.todoList.filter(data => data !== action.id)
-            console.log("AFter delete", afterDeleteList)
+            const afterDeleteList = state.todoList.filter(data => data.id !== action.id)
             localStorage.setItem("ToDoRedux", JSON.stringify(afterDeleteList));
             return {
                 todoList: afterDeleteList
             }
         default:
-            console.log("All Task GET")
             return state  
     }
 }

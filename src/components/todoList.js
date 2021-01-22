@@ -13,14 +13,12 @@ class TodoList extends React.Component{
     handleEdit(){
         this.setState({
             isEdit: !this.state.isEdit,
-            instance: this.props.text
-        }) 
-        console.log("Is edit changed")  
+            instance: this.props.obj.input
+        })  
     }
 
     handleDelete(){
-        console.log("First step ---> Signal for Delete Action")
-        this.props.whenDelete(this.props.text)
+        this.props.whenDelete(this.props.obj.id)
     }
 
     handleChange(event){
@@ -31,9 +29,7 @@ class TodoList extends React.Component{
 
     handleSubmit(event){
         event.preventDefault()
-        console.log("First step ---> Signal To Patch TASK")
-        this.props.whenSubmit(this.state.instance, this.props.text)
-        console.log("Last step ---> TASK UPDATED")
+        this.props.whenSubmit(this.state.instance, this.props.obj.id)
         this.setState({
             isEdit: false,
             instance: ''
@@ -42,7 +38,6 @@ class TodoList extends React.Component{
     }
 
     render(){
-        
         if(this.state.isEdit === true){
             return(
                 <div>
@@ -55,9 +50,7 @@ class TodoList extends React.Component{
         else{
             return(
                 <div>
-                    {this.props.text}
-                    {this.props.key}
-
+                    {this.props.obj.input}
                     <button onClick={this.handleEdit.bind(this)} className='btn btn-info btn-md m-3'>Edit</button>
                     <button onClick={this.handleDelete.bind(this)} className='btn btn-danger btn-md'>Delete</button>
                 </div>
@@ -66,31 +59,12 @@ class TodoList extends React.Component{
     }
 }
 
-// const mapStateToProps = state => {
-//     const list = state.allReducer.todoList.map((data, id) => {
-//         return(
-//             <div key={id} text={data}/>
-//         )
-//         // return {
-//         //     id: {id},
-//         //     text: {data}
-//         // }
-//     })
-//     return {
-//         id: list.key,
-//         text: list.text
-//     }
-
-// }
-
 const mapDispatchToProps = (dispatch) => {
     return{
-        whenSubmit: (data, id) => {
-            console.log(`Second step ---> Dispatch Action to PATCH Task ${data} of Id ${id}`)
-            dispatch(EDIT_TODO(data, id))
+        whenSubmit: (text, id) => {
+            dispatch(EDIT_TODO(text, id))
         },
         whenDelete: (id) => {
-            console.log(`Second step ---> Dispatch Action to Delete Task of Id ${id}`)
             dispatch(DELETE_TODO(id))
         }
     }

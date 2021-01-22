@@ -4,7 +4,6 @@ import TodoList from './todoList'
 import {connect} from 'react-redux'
 
 const mapStateToProps = state => {
-    console.log("The state is", state.allReducer)
     return{
         newState: state.allReducer,  
     }
@@ -14,7 +13,9 @@ class App extends React.Component{
     render(){
         const list = this.props.newState.todoList.map((data) => {
             return(
-                <TodoList key={data} text={data}/>
+                // Passing only text didn't work.
+                // Pass whole object as props
+                <TodoList key={data.id} obj={data}/>
             )
         })
 
